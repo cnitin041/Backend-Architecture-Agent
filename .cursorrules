@@ -1,0 +1,29 @@
+# Backend Architecture Agent Cursor Rules
+
+This project enforces strictly typed, async-first, clean architecture in Python.
+Follow these rules when writing code for this repository:
+
+1. **Modular Clean Architecture**:
+   - Maintain clear separation of concerns.
+   - Keep business logic (agent) separate from entry points (FastAPI/main).
+   - Use `app/utils.py` for shared helpers, `app/config.py` for global configuration.
+
+2. **Type Hints Everywhere**:
+   - all function parameters and return values MUST be type-hinted.
+   - Use `typing` module or built-in generics (Python 3.11+).
+
+3. **Async-First Design**:
+   - Prefer `async def` for I/O bound operations (especially OpenAI API calls or file reading).
+   - Use `aiofiles` if reading files asynchronously, or async libraries for external requests.
+
+4. **Proper Docstrings**:
+   - Use Google-style or standard descriptive docstrings for all classes and functions.
+   - Explain *why* a function exists and what the parameters/returns are.
+
+5. **No Hardcoded Secrets**:
+   - NEVER hardcode API keys, tokens, or credentials.
+   - Always load them via `app/config.py` using `pydantic-settings` from environment variables.
+
+6. **Structured Output Formatting**:
+   - LLM responses MUST be parsed into Pydantic models.
+   - Do not return raw string JSON. Ensure responses comply with defined schemas in `app/agent.py`.

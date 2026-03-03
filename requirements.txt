@@ -1,0 +1,24 @@
+# Web Framework
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+
+# LLM and Schemas
+openai>=1.14.0
+pydantic>=2.6.4
+pydantic-settings>=2.2.1
+
+# Local / Offline Model (Qwen2 fallback)
+# torch: install the CPU build by default; for GPU swap to the appropriate
+#        CUDA wheel from https://pytorch.org/get-started/locally/
+torch>=2.2.0
+transformers>=4.40.0
+accelerate>=0.27.0   # needed for device_map support in AutoModelForCausalLM
+
+# Environment and Utils
+python-dotenv>=1.0.1
+colorlog>=6.8.2
+
+# Testing & Benchmarking
+pytest>=8.1.1
+pytest-asyncio>=0.23.6
+httpx>=0.27.0
